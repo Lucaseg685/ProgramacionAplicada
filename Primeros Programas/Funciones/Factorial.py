@@ -9,7 +9,7 @@ def factorial(n):
             resultado=n*factorial(n-1)
    return resultado
 
-#CALCULAMOS EL FACTORIAL DE n.
+#CALCULAMOS EL FACTORIAL DE n
 numero=int(input("Numero:"))
 fact=factorial(numero)
 
