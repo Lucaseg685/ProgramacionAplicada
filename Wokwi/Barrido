@@ -1,1 +1,18 @@
+https://wokwi.com/projects/374257015847953409
 
+from machine import Pin
+import time
+
+leds = [Pin(i, Pin.OUT) for i in (22, 21, 19, 18, 5, 4, 2, 15)]
+
+def barrido_leds():
+    for _ in range(2):
+        for led in leds:
+            led.value(1)
+            time.sleep(0.4)
+            led.value(0)
+        leds.reverse()
+
+if __name__ == "__main__":
+    while True:
+        barrido_leds()
