@@ -1,25 +1,97 @@
-import time
+# Punto 9: Encontrar números primos en el rango de 0 a 30
+tope_rango = 30
+n = 0
+primo = True
+while n < tope_rango:
+    for div in range(2, n):
+        if n % div == 0:
+            primo = False
+    if primo:
+        print(n)
+    else:
+        primo = True
+    n += 1
 
-# Registra el tiempo de inicio
-inicio = time.time()
+# Punto 10: Optimización usando la sentencia 'break'
+n = 0
+primo = True
+while n < tope_rango:
+    for div in range(2, n):
+        if n % div == 0:
+            primo = False
+            break
+    if primo:
+        print(n)
+    else:
+        primo = True
+    n += 1
 
-# Itera a través de los números del 0 al 30
-for numero in range(0, 31):
-    conteo_divisores = 0
+# Punto 11: Comparación de eficiencia entre los enfoques con y sin 'break'
+ciclos_sin_break = 0
+n = 0
+primo = True
+while n < tope_rango:
+    for div in range(2, n):
+        ciclos_sin_break += 1
+        if n % div == 0:
+            primo = False
+    if primo:
+        print(n)
+    else:
+        primo = True
+    n += 1
+print('Cantidad de ciclos sin break: ' + str(ciclos_sin_break))
 
-    # Comprueba cuántos divisores tiene el número
-    for divisor in range(1, numero + 1):
-        residuo = numero % divisor
-        if residuo == 0:
-            conteo_divisores += 1
+ciclos_con_break = 0
+n = 0
+primo = True
+while n < tope_rango:
+    for div in range(2, n):
+        ciclos_con_break += 1
+        if n % div == 0:
+            primo = False
+            break
+    if primo:
+        print(n)
+    else:
+        primo = True
+    n += 1
+print('Cantidad de ciclos con break: ' + str(ciclos_con_break))
+porcentaje_optimizacion = (ciclos_con_break / ciclos_sin_break) * 100
+print('Se logró una optimización del ' + str(porcentaje_optimizacion) + '% al aplicar la sentencia "break".')
 
-    # Si el número tiene exactamente 2 divisores, se considera primo
-    if conteo_divisores == 2:
-        print(f'{numero} es un número primo')
+# Punto 12: Comprobación de la optimización con un rango más grande (100)
+tope_rango = 100
+ciclos_sin_break = 0
+n = 0
+primo = True
+while n < tope_rango:
+    for div in range(2, n):
+        ciclos_sin_break += 1
+        if n % div == 0:
+            primo = False
+    if primo:
+        print(n)
+    else:
+        primo = True
+    n += 1
+print('Cantidad de ciclos sin break: ' + str(ciclos_sin_break))
 
-# Registra el tiempo de finalización
-fin = time.time()
+ciclos_con_break = 0
+n = 0
+primo = True
+while n < tope_rango:
+    for div in range(2, n):
+        ciclos_con_break += 1
+        if n % div == 0:
+            primo = False
+            break
+    if primo:
+        print(n)
+    else:
+        primo = True
+    n += 1
+print('Cantidad de ciclos con break: ' + str(ciclos_con_break))
+porcentaje_optimizacion = (ciclos_con_break / ciclos_sin_break) * 100
+print('La optimización con "break" se mantuvo al evaluar un rango mayor (100).')
 
-# Calcula y muestra el tiempo total en milisegundos
-tiempo_total = (fin - inicio) * 1000
-print("Tiempo total de ejecución: ", tiempo_total, "milisegundos")
