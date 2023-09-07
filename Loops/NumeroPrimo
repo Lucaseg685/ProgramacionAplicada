@@ -1,0 +1,25 @@
+import time
+
+# Registra el tiempo de inicio
+inicio = time.time()
+
+# Itera a través de los números del 0 al 30
+for numero in range(0, 31):
+    conteo_divisores = 0
+
+    # Comprueba cuántos divisores tiene el número
+    for divisor in range(1, numero + 1):
+        residuo = numero % divisor
+        if residuo == 0:
+            conteo_divisores += 1
+
+    # Si el número tiene exactamente 2 divisores, se considera primo
+    if conteo_divisores == 2:
+        print(f'{numero} es un número primo')
+
+# Registra el tiempo de finalización
+fin = time.time()
+
+# Calcula y muestra el tiempo total en milisegundos
+tiempo_total = (fin - inicio) * 1000
+print("Tiempo total de ejecución: ", tiempo_total, "milisegundos")
